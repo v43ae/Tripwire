@@ -1,0 +1,40 @@
+Since we are bypassing a microcontroller and going "bare-metal," we need a NPN Transistor (like the common 2N2222 or BC547) to act as our electronic switch.
+
+The Wiring Schematic
+In this circuit, the Transistor acts as a gatekeeper. When the IR Receiver "sees" the beam, it keeps the Transistor closed, preventing the buzzer from getting power. When the beam is broken, the Transistor opens and lets the power flow.
+
+1. The Components You Need
+IR Receiver: (The 3-pin component from your monitor/TV stick).
+
+NPN Transistor: (Look for "2N2222", "BC547", or "C1815" on old boards).
+
+Buzzer: (From the monitor, phone, or any old toy).
+
+Resistor (Optional but Recommended): A 1kΩ resistor to protect the transistor.
+
+Power Source: 9V Battery or a 5V USB power bank.
+
+2. The Step-by-Step Connection
+Identify the IR Receiver Pins: Look at the flat side of the IR receiver. Usually, the pins are VCC (Power), GND (Ground), and OUT (Signal). Connect VCC to your battery (+) and GND to your battery (-).
+
+Connect the Transistor:
+
+Emitter (E): Connect directly to the battery (-).
+
+Base (B): Connect this to the OUT pin of the IR Receiver. (If the alarm is constantly on, put a 1kΩ resistor between the IR output and the base).
+
+Collector (C): Connect this to the Negative (-) pin of your buzzer.
+
+Complete the Buzzer Loop:
+
+Connect the Positive (+) pin of your buzzer directly to the battery (+).
+
+How it works at the physical level:
+When the IR beam hits the receiver, the receiver sends a high signal to the Transistor's Base. This creates a path of least resistance from the Collector to the Emitter, effectively "grounding" the buzzer. Since both sides of the buzzer are now connected to the same potential (or the path is shorted), no electricity flows through the buzzer.
+
+When the beam is broken, the signal to the Base drops to zero. The Transistor turns "off," creating an "open circuit" for the buzzer's ground path. Now, the electricity has nowhere to go but through the buzzer, causing it to scream.
+
+Troubleshooting the "Pulse" Issue
+As mentioned before, TV remote boards pulse light. If the buzzer "chatters" or sounds weak, it's because the IR Receiver is trying to interpret data pulses.
+
+The Quick Fix: Add a Capacitor (anything from 10uF to 100uF) in parallel with your buzzer (across the buzzer's +/- pins). This will smooth out the pulses into a steady current, making the buzzer sound constant and loud.
